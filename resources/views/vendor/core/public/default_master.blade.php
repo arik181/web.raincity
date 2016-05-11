@@ -39,7 +39,7 @@
 </head>
 
 <body class="body-{{ $lang }} @yield('bodyClass') @if($navbar)has-navbar @endif">
-<div id="logo">
+<div id="logo"></div>
 
     @section('skip-links')
     <a href="#main" class="skip-to-content">@lang('db.Skip to content')</a>
@@ -82,7 +82,9 @@
         </div>
         </nav>
 
+        <div class="content">
         @yield('main')
+        </div>
 
         @section('site-footer')
         <footer class="site-footer">
@@ -102,7 +104,6 @@
 
     @yield('js')
 
-</div>
 </body>
 
 </html>

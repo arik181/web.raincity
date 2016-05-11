@@ -35,6 +35,34 @@ gulp.task('less-public', function () {
 
 });
 
+gulp.task('less-home', function() {
+    return gulp.src('resources/assets/less/public/home.less')
+        .pipe(less())
+        .on('error', swallowError)
+        .pipe(prefix({
+            browsers: ['> 1%', 'IE > 8'],
+            cascade: false
+        }))
+        .pipe(minifyCSS())
+        .pipe(rename('home.css'))
+        .pipe(gulp.dest('public/css'))
+        .pipe(livereload());
+});
+
+gulp.task('less-default', function() {
+    return gulp.src('resources/assets/less/public/default.less')
+        .pipe(less())
+        .on('error', swallowError)
+        .pipe(prefix({
+            browsers: ['> 1%', 'IE > 8'],
+            cascade: false
+        }))
+        .pipe(minifyCSS())
+        .pipe(rename('default.css'))
+        .pipe(gulp.dest('public/css'))
+        .pipe(livereload());
+});
+
 gulp.task('less-admin', function () {
 
     return gulp.src('resources/assets/less/admin/master.less')
@@ -231,6 +259,8 @@ gulp.task('watch', function () {
 // What tasks does running gulp trigger?
 gulp.task('all', [
     'less-public',
+    'less-home',
+    'less-default',
     'less-admin',
     'js-public',
     'js-admin',
@@ -243,6 +273,8 @@ gulp.task('all', [
 
 gulp.task('default', [
     'less-public',
+    'less-home',
+    'less-default',
     'js-public',
     'watch'
 ]);

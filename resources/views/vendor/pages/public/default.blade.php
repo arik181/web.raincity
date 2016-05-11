@@ -1,7 +1,10 @@
-@extends('pages::public.master')
+@extends('pages::public.default_master')
+
+@section('css')
+<link href="{{ app()->isLocal() ? asset('css/default.css') : asset(elixir('css/default.css')) }}" rel="stylesheet">
+@endsection
 
 @section('page')
-
     @if($children)
     <ul class="nav nav-subpages">
         @foreach ($children as $child)

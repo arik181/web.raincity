@@ -1,7 +1,12 @@
 @extends('pages::public.master')
+<?php 
+//@section('site-title')
+//<h1 class="site-title">@include('core::public._site-title')</h1>
+//@endsection
+ ?>
 
-@section('site-title')
-<h1 class="site-title">@include('core::public._site-title')</h1>
+@section('css')
+<link href="{{ app()->isLocal() ? asset('css/home.css') : asset(elixir('css/home.css')) }}" rel="stylesheet">
 @endsection
 
 @section('page')
@@ -41,5 +46,9 @@
         </div>
     @endif
 --}}
+
+<div id="menu">
+{{ Menus::render('Main') }}
+</div>
 
 @endsection

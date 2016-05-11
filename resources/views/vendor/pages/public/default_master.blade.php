@@ -1,4 +1,4 @@
-@extends('core::public.master')
+@extends('core::public.default_master')
 
 <?php //@section('title', $page->title.' – '.$websiteTitle)
 //@section('ogTitle', $page->title)
