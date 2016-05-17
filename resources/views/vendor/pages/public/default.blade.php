@@ -13,7 +13,11 @@
     </ul>
     @endif
 
+
     {!! $page->present()->body !!}
     @include('galleries::public._galleries', ['model' => $page])
 
+    @if($page->slug === 'about')
+        {{ Menus::render('About') }}
+    @endif
 @endsection

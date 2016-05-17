@@ -39,7 +39,7 @@
 </head>
 
 <body class="body-{{ $lang }} @yield('bodyClass') @if($navbar)has-navbar @endif">
-<div id="logo"></div>
+<a href="/"><div id="logo"></div></a>
 
     @section('skip-links')
     <a href="#main" class="skip-to-content">@lang('db.Skip to content')</a>
@@ -79,10 +79,15 @@
         <nav class="social-nav">
             <div id="social-container">
             {!! Menus::render('social') !!}
-        </div>
+		</div>
         </nav>
 
         <div class="content">
+        @if($page->parent_id == 4 || $page->id == 4)
+        {!! Menus::render('events') !!}
+        @elseif($page->parent_id == 11 || $page->id == 11)
+        {!! Menus::render('about') !!}
+        @endif
         @yield('main')
         </div>
 
